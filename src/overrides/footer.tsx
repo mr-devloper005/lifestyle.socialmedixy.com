@@ -20,7 +20,6 @@ const columns = [
     links: [
       { label: 'About us', href: '/about' },
       { label: 'Contact', href: '/contact' },
-      { label: 'Media kit', href: '/press' },
     ],
   },
   {
