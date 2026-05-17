@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { FileText, ArrowRight } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/site-config'
 import { siteContent } from '@/config/site.content'
+import { fetchTaskPosts } from '@/lib/task-data'
+import { CATEGORY_OPTIONS, normalizeCategory } from '@/lib/categories'
 
 export const FOOTER_OVERRIDE_ENABLED = true
 
@@ -32,8 +34,31 @@ const columns = [
   },
 ]
 
-export function FooterOverride() {
+const getCategoryLabel = (value: string) => {
+  const normalized = normalizeCategory(value)
+  return CATEGORY_OPTIONS.find((item) => item.slug === normalized)?.name || value
+}
+
+export async function FooterOverride() {
   const primary = SITE_CONFIG.tasks.find((t) => t.enabled) || SITE_CONFIG.tasks[0]
+  const posts = await fetchTaskPosts('mediaDistribution', 200, { allowMockFallback: false })
+  const categories = Array.from(
+    new Map(
+      posts
+        .map((post) => {
+          const content = post.content && typeof post.content === 'object' ? (post.content as Record<string, unknown>) : {}
+          const raw = typeof content.category === 'string' ? content.category.trim() : ''
+          if (!raw) return null
+          const slug = normalizeCategory(raw)
+          return {
+            slug,
+            name: getCategoryLabel(raw),
+          }
+        })
+        .filter((item): item is { slug: string; name: string } => Boolean(item))
+        .map((item) => [item.slug, item])
+    ).values()
+  ).slice(0, 8)
 
   return (
     <footer className="border-t border-white/10 bg-[linear-gradient(180deg,#04004a_0%,#1c045d_48%,#0f0238_100%)] text-white">
@@ -42,7 +67,7 @@ export function FooterOverride() {
           <div>
             <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white/10">
-                <span className="font-[family-name:var(--font-display)] text-xl font-semibold text-[#f3c5ff]">f</span>
+                <span className="font-[family-name:var(--font-display)] text-xl font-semibold text-[#f3c5ff]">{SITE_CONFIG.name.slice(0, 1).toLowerCase()}</span>
               </span>
               <div>
                 <p className="font-[family-name:var(--font-display)] text-xl font-semibold">{SITE_CONFIG.name}</p>
@@ -76,6 +101,24 @@ export function FooterOverride() {
             </div>
           ))}
         </div>
+
+        {categories.length ? (
+          <div className="mt-10 border-t border-white/10 pt-8">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#f3c5ff]/75">Categories</h3>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <Link
+                  key={category.slug}
+                  href={`/updates?category=${category.slug}`}
+                  className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80 transition hover:border-[#f3c5ff]/60 hover:bg-white/10 hover:text-white"
+                >
+                  {category.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.
