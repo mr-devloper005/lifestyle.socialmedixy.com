@@ -99,8 +99,6 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
               <span>
                 By <span className="font-medium text-[#3a0a1a]">{author}</span>
               </span>
-              {date ? <span className="text-[#921A40]/50">·</span> : null}
-              {date ? <span>{date}</span> : null}
             </div>
 
             <div className="mt-8 flex flex-wrap gap-2">
