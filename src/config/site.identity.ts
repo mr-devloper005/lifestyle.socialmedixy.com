@@ -1,10 +1,10 @@
 export const siteIdentity = {
   code: process.env.NEXT_PUBLIC_SITE_CODE || 'o9tkhaqzaq',
-  name: process.env.NEXT_PUBLIC_SITE_NAME || 'Lifestyle Socialmedixy',
-  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Independent media updates',
+  name: process.env.NEXT_PUBLIC_SITE_NAME || 'Lifestyle Social Medixy',
+  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Official press releases & media coverage',
   description:
     process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
-    'A media-distribution newsroom for announcements, coverage, and press updates on Lifestyle Socialmedixy.',
+    'Lifestyle Social Medixy is your trusted source for official press releases, breaking announcements, and verified media coverage across all industries.',
   domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'lifestyle.socialmedixy.com',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://lifestyle.socialmedixy.com',
   ogImage: process.env.NEXT_PUBLIC_SITE_OG_IMAGE || '/og-default.png',

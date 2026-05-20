@@ -164,6 +164,18 @@ export async function TaskDetailPageOverride({ slug }: { task: TaskKey; slug: st
                 ))}
               </ul>
             </div>
+
+            <div className="rounded-[1.25rem] border border-[#921A40]/10 bg-[linear-gradient(135deg,#921A40_0%,#C75B7A_100%)] p-6 text-white">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/70">Submit your release</p>
+              <p className="mt-3 text-lg font-semibold">Reach thousands of journalists</p>
+              <p className="mt-2 text-sm text-white/75">Publish your press release on Lifestyle Social Medixy and get in front of the right media contacts.</p>
+              <Link
+                href="/create/mediaDistribution"
+                className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-[#921A40] transition hover:bg-[#D9ABAB]"
+              >
+                Submit release →
+              </Link>
+            </div>
           </aside>
         </div>
       </article>

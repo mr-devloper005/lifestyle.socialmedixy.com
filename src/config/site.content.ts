@@ -2,85 +2,82 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Press wire & syndication',
+    tagline: 'Official press releases & media coverage',
   },
   footer: {
-    tagline: 'Distribution analytics for modern comms teams',
+    tagline: 'Trusted media coverage for every industry',
   },
   hero: {
-    badge: 'National syndication',
-    title: ['Reach journalists and readers where decisions are made.'],
+    badge: 'Verified press releases',
+    title: ['Breaking news and official announcements from the world\'s leading organizations.'],
     description:
-      'feedopr routes your story through a curated distribution network with structured reporting—built for teams that need clarity, not clutter.',
+      'Lifestyle Social Medixy delivers verified press releases, corporate announcements, and media coverage directly to journalists, editors, and decision-makers worldwide.',
     primaryCta: {
       label: 'Submit press release',
       href: '/create/mediaDistribution',
     },
     secondaryCta: {
-      label: 'View latest releases',
-      href: '/online-media',
+      label: 'Browse releases',
+      href: '/updates',
     },
-    searchPlaceholder: 'Search releases',
-    focusLabel: 'Latest',
-    featureCardBadge: 'distribution desk',
-    featureCardTitle: 'Wire-ready formatting and predictable timelines.',
+    searchPlaceholder: 'Search press releases',
+    focusLabel: 'Breaking',
+    featureCardBadge: 'media desk',
+    featureCardTitle: 'Official releases with verified sourcing and structured formatting.',
     featureCardDescription:
-      'Draft, review, and publish with fields tuned for press workflows—without turning the homepage into a generic blog template.',
+      'Every release is formatted for wire distribution, indexed for search, and optimized for media pickup across all major news surfaces.',
   },
   home: {
     metadata: {
-      title: 'feedopr — Press release distribution & syndication',
+      title: 'Lifestyle Social Medixy — Official Press Releases & Media Coverage',
       description:
-        'Distribute announcements to thousands of digital endpoints, monitor pickup signals, and keep teams aligned with analytics built for comms.',
-      openGraphTitle: 'feedopr — Press release distribution',
+        'Access verified press releases, corporate announcements, and breaking news from organizations worldwide. Your trusted source for official media coverage.',
+      openGraphTitle: 'Lifestyle Social Medixy — Official Press Releases',
       openGraphDescription:
-        'Syndicated distribution, media targeting, and reporting in one calm, operator-friendly surface.',
+        'Verified press releases, corporate announcements, and media coverage from leading organizations worldwide.',
       keywords: [
-        'press release distribution',
-        'media syndication',
+        'press release',
+        'media coverage',
+        'corporate announcements',
+        'breaking news',
         'PR wire',
-        'earned media',
-        'announcements',
-        'feedopr',
+        'official releases',
+        'Lifestyle Social Medixy',
       ],
     },
-    introBadge: 'Why teams choose feedopr',
-    introTitle: 'Built for distribution—not for decorative homepages.',
+    introBadge: 'Why media teams choose Lifestyle Social Medixy',
+    introTitle: 'The most trusted source for official press releases.',
     introParagraphs: [
-      'The surface is tuned for scanning headlines, comparing categories, and opening clean reading pages—matching how editorial and comms teams actually work.',
-      'Behind the UI, the same task routes and publishing flows stay compatible with the wider platform—so you can grow without a redesign later.',
+      'Every release on Lifestyle Social Medixy is verified, structured for wire distribution, and optimized for maximum media pickup across digital and print surfaces.',
+      'Our platform connects PR professionals with journalists, editors, and media outlets—ensuring your story reaches the right audience at the right time.',
     ],
     sideBadge: 'What you get',
     sidePoints: [
-      'Structured press pages with shareable metadata.',
-      'Archive views with filters that stay fast on mobile.',
-      'Analytics framing that highlights reach—not vanity charts.',
+      'Verified press pages with full media metadata.',
+      'Category-filtered archive for fast editorial research.',
+      'Distribution analytics showing real pickup signals.',
     ],
     primaryLink: {
       label: 'Browse releases',
-      href: '/online-media',
+      href: '/updates',
     },
     secondaryLink: {
-      label: 'Talk to us',
+      label: 'Contact editorial',
       href: '/contact',
     },
   },
   cta: {
-    badge: 'Ready to ship your next announcement?',
-    title: 'Submit a release, track pickup, and keep stakeholders in the loop.',
+    badge: 'Ready to reach the media?',
+    title: 'Submit your press release and get in front of journalists worldwide.',
     description:
-      'Start with a straightforward composer, publish to your wire, and use search-friendly pages that stay easy to read on every device.',
+      'Publish your announcement on Lifestyle Social Medixy and reach thousands of journalists, editors, and media outlets with a single submission.',
     primaryCta: {
       label: 'Submit press release',
       href: '/create/mediaDistribution',
     },
-    secondaryCta: {
-      label: 'Compare plans',
-      href: '/pricing',
-    },
   },
   taskSectionHeading: 'Latest press releases',
-  taskSectionDescriptionSuffix: 'Fresh announcements from the feedopr wire.',
+  taskSectionDescriptionSuffix: 'Fresh announcements from verified organizations.',
 } as const
 
 export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'social'>, { title: string; description: string }> = {

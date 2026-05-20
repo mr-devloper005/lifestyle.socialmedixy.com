@@ -11,7 +11,20 @@ import { getFactoryState } from '@/design/factory/get-factory-state'
 import { getGoogleFontsHref, getSiteFontVariables } from '@/config/site.font'
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildSiteMetadata()
+  const base = await buildSiteMetadata()
+  return {
+    ...base,
+    icons: {
+      icon: [
+        { url: '/favicon.png?v=2', type: 'image/png' },
+        { url: '/favicon.ico', type: 'image/x-icon' },
+      ],
+      apple: [
+        { url: '/apple-icon.png?v=2', type: 'image/png' },
+      ],
+      shortcut: '/favicon.png?v=2',
+    },
+  }
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -23,8 +36,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         {googleFontsHref ? <link rel="stylesheet" href={googleFontsHref} /> : null}
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
+        {/* Explicit favicon links with cache-bust — overrides any stale browser cache */}
+        <link rel="icon" type="image/png" href="/favicon.png?v=2" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-icon.png?v=2" />
+        <link rel="shortcut icon" href="/favicon.png?v=2" />
       </head>
       <body
         data-site-shell={recipe.homeLayout}
