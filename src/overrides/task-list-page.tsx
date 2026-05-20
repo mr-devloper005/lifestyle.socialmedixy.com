@@ -88,15 +88,15 @@ export async function TaskListPageOverride({
   }
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(180deg,#f7f4ff_0%,#ffffff_42%)] text-foreground">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#fdf0f3_0%,#ffffff_42%)] text-foreground">
       <NavbarShell />
       <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
         <header className="max-w-3xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#845ec2]">Archive</p>
-          <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-semibold tracking-[-0.03em] text-[#04004a]">Press releases</h1>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#921A40]">Archive</p>
+          <h1 className="mt-3 font-[family-name:var(--font-display)] text-4xl font-semibold tracking-[-0.03em] text-[#3a0a1a]">Press releases</h1>
           <p className="mt-4 text-muted-foreground">
-            Filter by desk category or recency. Full-text search lives on the{' '}
-            <Link href="/search" className="font-semibold text-[#744fb1] underline-offset-4 hover:underline">
+            Filter by industry category or date. Full-text search lives on the{' '}
+            <Link href="/search" className="font-semibold text-[#C75B7A] underline-offset-4 hover:underline">
               search page
             </Link>
             .
@@ -105,13 +105,13 @@ export async function TaskListPageOverride({
 
         <div className="mt-10 flex flex-col gap-3 lg:flex-row lg:items-start">
           <div className="lg:w-64 lg:shrink-0">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Category</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Industry</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <Link
                 href={base + qs('all', windowKey)}
                 className={cn(
                   'rounded-full px-3 py-1.5 text-xs font-semibold transition',
-                  normalized === 'all' ? 'bg-[#04004a] text-white' : 'border border-[#1c045d]/12 bg-white hover:border-[#845ec2]/35'
+                  normalized === 'all' ? 'bg-[#921A40] text-white' : 'border border-[#921A40]/12 bg-white hover:border-[#C75B7A]/35'
                 )}
               >
                 All
@@ -122,7 +122,7 @@ export async function TaskListPageOverride({
                   href={base + qs(c.slug, windowKey)}
                   className={cn(
                     'rounded-full px-3 py-1.5 text-xs font-semibold transition',
-                    normalized === c.slug ? 'bg-[#04004a] text-white' : 'border border-[#1c045d]/12 bg-white hover:border-[#845ec2]/35'
+                    normalized === c.slug ? 'bg-[#921A40] text-white' : 'border border-[#921A40]/12 bg-white hover:border-[#C75B7A]/35'
                   )}
                 >
                   {c.name}
@@ -139,36 +139,37 @@ export async function TaskListPageOverride({
               ].map((w) => {
                 const winActive = w.id === 'all' ? !windowKey : windowKey === w.id
                 return (
-                <Link
-                  key={w.id}
-                  href={base + qs(normalized, w.id === 'all' ? undefined : w.id)}
-                  className={cn(
-                    'rounded-full px-3 py-1.5 text-xs font-semibold transition',
-                    winActive ? 'bg-[#845ec2] text-white' : 'border border-[#1c045d]/12 bg-white hover:border-[#845ec2]/35'
-                  )}
-                >
-                  {w.label}
-                </Link>
-              )})}
+                  <Link
+                    key={w.id}
+                    href={base + qs(normalized, w.id === 'all' ? undefined : w.id)}
+                    className={cn(
+                      'rounded-full px-3 py-1.5 text-xs font-semibold transition',
+                      winActive ? 'bg-[#C75B7A] text-white' : 'border border-[#921A40]/12 bg-white hover:border-[#C75B7A]/35'
+                    )}
+                  >
+                    {w.label}
+                  </Link>
+                )
+              })}
             </div>
           </div>
 
           <div className="min-w-0 flex-1">
-            <form action="/search" method="get" className="mb-8 flex w-full gap-2 rounded-2xl border border-[#1c045d]/10 bg-white p-2 shadow-sm">
+            <form action="/search" method="get" className="mb-8 flex w-full gap-2 rounded-2xl border border-[#921A40]/10 bg-white p-2 shadow-sm">
               <input type="hidden" name="master" value="1" />
               <input type="hidden" name="task" value="mediadistribution" />
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#1c045d]/35" />
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#921A40]/35" />
                 <input
                   name="q"
                   placeholder="Search headlines, summaries, tags…"
-                  className="h-11 w-full rounded-xl border border-transparent bg-[#faf8ff] pl-10 pr-3 text-sm outline-none ring-0 focus:border-[#845ec2]/40"
+                  className="h-11 w-full rounded-xl border border-transparent bg-[#fdf8f9] pl-10 pr-3 text-sm outline-none ring-0 focus:border-[#C75B7A]/40"
                   aria-label="Search press releases"
                 />
               </div>
               <button
                 type="submit"
-                className="shrink-0 rounded-xl bg-[#04004a] px-5 text-sm font-semibold text-white transition hover:bg-[#1c045d]"
+                className="shrink-0 rounded-xl bg-[#921A40] px-5 text-sm font-semibold text-white transition hover:bg-[#C75B7A]"
               >
                 Search
               </button>
@@ -180,18 +181,18 @@ export async function TaskListPageOverride({
                   <Link
                     key={post.id}
                     href={`/updates/${post.slug}`}
-                    className="group flex flex-col overflow-hidden rounded-[1.25rem] border border-[#1c045d]/10 bg-white shadow-[0_16px_48px_rgba(4,0,74,0.06)] transition hover:-translate-y-0.5 hover:border-[#845ec2]/35"
+                    className="group flex flex-col overflow-hidden rounded-[1.25rem] border border-[#921A40]/10 bg-white shadow-[0_16px_48px_rgba(146,26,64,0.06)] transition hover:-translate-y-0.5 hover:border-[#C75B7A]/35"
                   >
                     <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
                       <ContentImage src={getPostImage(post)} alt="" fill className="object-cover transition duration-500 group-hover:scale-[1.03]" />
-                      <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#1c045d]">
+                      <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#921A40]">
                         {categoryLabel(post)}
                       </span>
                     </div>
                     <div className="flex flex-1 flex-col p-5">
-                      <h2 className="font-[family-name:var(--font-display)] text-lg font-semibold leading-snug text-[#04004a] group-hover:text-[#744fb1]">{post.title}</h2>
+                      <h2 className="font-[family-name:var(--font-display)] text-lg font-semibold leading-snug text-[#3a0a1a] group-hover:text-[#921A40]">{post.title}</h2>
                       <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{excerpt(post.summary)}</p>
-                      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#845ec2]">
+                      <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#C75B7A]">
                         Read release
                         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                       </span>
@@ -200,10 +201,10 @@ export async function TaskListPageOverride({
                 ))}
               </div>
             ) : (
-              <div className="rounded-[1.5rem] border border-dashed border-[#1c045d]/25 bg-[#faf8ff]/60 p-12 text-center">
-                <p className="font-medium text-[#04004a]">No releases match these filters.</p>
+              <div className="rounded-[1.5rem] border border-dashed border-[#921A40]/25 bg-[#fdf8f9]/60 p-12 text-center">
+                <p className="font-medium text-[#3a0a1a]">No releases match these filters.</p>
                 <p className="mt-2 text-sm text-muted-foreground">Try another category, widen the date window, or use search.</p>
-                <Link href="/updates" className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#845ec2] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#744fb1]">
+                <Link href="/updates" className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#921A40] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#C75B7A]">
                   Clear filters
                 </Link>
               </div>
@@ -211,15 +212,15 @@ export async function TaskListPageOverride({
           </div>
         </div>
 
-        <aside className="mt-16 grid gap-6 border-t border-[#1c045d]/10 pt-10 lg:grid-cols-[1fr_280px]">
+        <aside className="mt-16 grid gap-6 border-t border-[#921A40]/10 pt-10 lg:grid-cols-[1fr_280px]">
           <div />
-          <div className="rounded-[1.25rem] border border-[#1c045d]/10 bg-[#faf8ff]/50 p-6">
+          <div className="rounded-[1.25rem] border border-[#921A40]/10 bg-[#fdf8f9]/50 p-6">
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">Recently updated</p>
             <ul className="mt-4 space-y-4">
               {sidebar.map((post) => (
                 <li key={post.id}>
                   <Link href={`/updates/${post.slug}`} className="group block">
-                    <p className="text-sm font-semibold leading-snug text-[#04004a] group-hover:text-[#744fb1]">{post.title}</p>
+                    <p className="text-sm font-semibold leading-snug text-[#3a0a1a] group-hover:text-[#921A40]">{post.title}</p>
                     <p className="mt-1 text-[11px] text-muted-foreground">
                       {post.publishedAt
                         ? new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
